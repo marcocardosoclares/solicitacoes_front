@@ -1,117 +1,32 @@
-export function ESPECIALIDADES() {
+export function FETCH_IC(apiRoute, body) {
   return {
-    url: "/api/especialidades",
-  }
-}
-
-export function SOLICITACOES() {
-  return {
-    url: "/api/solicitacoes",
-  }
-}
-
-export function SOLICITACOES_STORE(body) {
-  return {
-    url: "/api/solicitacoes",
+    url: `/api/${apiRoute}`,
     options: body
   }
 }
 
-export function SOLICITACOES_EDIT(id) {
+export function FETCH_RUD(apiRoute, id,body) {
   return {
-    url: `/api/solicitacoes/${id}/edit`
-  }
-}
-
-export function SOLICITACOES_SEARCH(body) {
-  return {
-    url: "/api/solicitacoes/search",
+    url: `/api/${apiRoute}/${id}`,
     options: body
   }
 }
 
-export function GET_ROLES() {
+export function FETCH_EDIT(apiRoute, id) {
   return {
-    url: "/api/perfis",
+    url: `/api/${apiRoute}/${id}/edit`
   }
 }
 
-export function GET_USER() {
+export function FETCH_SEARCH(apiRoute,body) {
   return {
-    url: "/api/user",
-  }
-}
-
-export function PASSWORD_LOST(body) {
-  return {
-    url: "/api/forgot-password",
-    options: body,
-  }
-}
-
-export function PASSWORD_RESET(body) {
-  return {
-    url: "/api/reset-password",
+    url: `/api/${apiRoute}/search`,
     options: body
   }
 }
 
-export function QUESTIONARIO_FORM(body) {
-  return {
-    url: "/api/questionario-form",
-    options: body
-  }
-}
-
-export function QUESTIONARIO_RESPOSTAS() {
-  return {
-    url: "/api/questionario-respostas",
-  }
-}
-
-export function QUESTIONARIO_RESPOSTAS_STORE(body) {
-  return {
-    url: "/api/questionario-respostas",
-    options: body
-  }
-}
-
-export function RESPOSTAS(body) {
-  return {
-    url: `/api/respostas`,
-    options: body
-  }
-}
-
-export function RESPOSTAS_STORE(body) {
-  return {
-    url: "/api/respostas",
-    options: body
-  }
-}
-
-export function SUB_QUESTOES(body) {
-  return {
-    url: "/api/sub-questoes",
-    options: body
-  }
-}
-
-export function TOKEN_POST() {
+export function FETCH_TOKEN() {
   return {
     url: "/sanctum/csrf-cookie",
-  }
-}
-
-export function USER_LOGIN(body) {
-  return {
-    url: "/api/login",
-    options: body
-  }
-}
-
-export function USER_LOGOUT() {
-  return {
-    url: "/api/logout",
   }
 }

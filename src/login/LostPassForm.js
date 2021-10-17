@@ -1,20 +1,19 @@
 import React from 'react'
 import FloatLabelInput from '../components/FloatLabelInput'
 import ButtonBlock from '../components/ButtonBlock'
-import { PASSWORD_LOST } from '../api/Api';
-import useForm from '../hooks/useForm';
+import { FETCH_IC } from '../api/Api';
 import Head from '../helper/Head';
 import useFetch from '../hooks/useFetch';
 import Alert from '../components/Alert';
 import Loading from '../components/Loading';
 
 const LostPassForm = () => {
-  const email = useForm();
   const {data, error, loading, request} = useFetch();
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const {url, options} = PASSWORD_LOST({email: email.value})
+    const formData = new FormData(document.getElementById("lost-pass-form"));
+    const {url, options} = FETCH_IC("forgot-password",formData);
     await request("post",url, options);
   }
 
@@ -25,8 +24,8 @@ const LostPassForm = () => {
       <p className="text-center text-muted">
         Digite o seu e-mail
       </p>
-      <form onSubmit={handleSubmit}>
-        <FloatLabelInput type="email" name="email" label="E-mail" placeholder="email@exemplo.com" required {...email} />
+      <form id="lost-pass-form" onSubmit={handleSubmit}>
+        <FloatLabelInput type="email" name="email" label="E-mail" placeholder="email@exemplo.com" required />
         {loading 
           ? <ButtonBlock disabled color="primary">Enviando E-mail <Loading /></ButtonBlock> 
           : <ButtonBlock color="primary">Enviar E-mail</ButtonBlock>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { GET_USER, TOKEN_POST, USER_LOGIN, USER_LOGOUT } from '../api/Api';
+import { FETCH_IC, FETCH_TOKEN } from '../api/Api';
 import apiClient from '../helper/ApiClient';
 import { Redirect } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ export const UserStorage = ({children}) => {
 
   const userLogout = React.useCallback(
     async function() {
-      const {url} = USER_LOGOUT();
+      const {url} = FETCH_IC("logout");
       await apiClient.get(url);
       setLogin(false);
       setUser(null);
@@ -26,7 +26,7 @@ export const UserStorage = ({children}) => {
   );
 
   async function getUser() {
-    const {url}     = GET_USER();
+    const {url}     = FETCH_IC("user");
     const response  = await apiClient.get(url);
     setUser(response.data);
     setLogin(true);
@@ -37,10 +37,10 @@ export const UserStorage = ({children}) => {
       setError(null);
       setLoading(true);
       // TOKEN
-      const tokenPost = TOKEN_POST(); 
+      const tokenPost = FETCH_TOKEN(); 
       await apiClient.get(tokenPost.url).catch(error => {throw new Error(error)});
       //AUTH
-      const userAuth = USER_LOGIN({email,password});
+      const userAuth = FETCH_IC("login",{email,password});
       const authResponse = await apiClient.post(userAuth.url, userAuth.options)
       if (authResponse.data.ok) {
         window.localStorage.setItem("userLogged",true); 

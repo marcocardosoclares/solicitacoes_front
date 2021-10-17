@@ -1,6 +1,5 @@
 import React from 'react'
 import './styles/App.css';
-// import 'bootstrap/dist/js/bootstrap.bundle';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom'
 import { UserStorage } from './context/UserContext';
 import Login from './login/Login'

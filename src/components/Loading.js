@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Loading = () => {
+const Loading = ({content}) => {
   return (
     <>
-      <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    {content && <span className="text-muted">{content} </span>}
+    <span className="spinner-border spinner-border-sm text-muted" role="status" aria-hidden="true"></span>
     </>
   )
 }
