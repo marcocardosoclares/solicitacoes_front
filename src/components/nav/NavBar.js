@@ -3,7 +3,7 @@ import React from 'react'
 const NavBar = ({userName, navTitle, navActions}) => {
 
   return (
-    <nav className="navbar navbar-light navbar-expand-md bg-white sticky-top shadow-sm">
+    <nav className="navbar navbar-light navbar-expand-md bg-white sticky-top shadow-sm animeLeft">
       <div className="container-fluid">
         <span className="navbar-brand">
           {navTitle || "Solicitações"}

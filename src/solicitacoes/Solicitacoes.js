@@ -10,7 +10,7 @@ const Solicitacoes = () => {
 
   const {path} = useRouteMatch();
   return (
-    <div className="container-lg vstack gap-2">
+    <div className="container-fluid vstack gap-2">
       <Switch>
         <Route path={`${path}/:id/excluir`}><FormDestroy /></Route>
         <Route path={`${path}/:id/aprovacao`}><FormAprovacao /></Route>
